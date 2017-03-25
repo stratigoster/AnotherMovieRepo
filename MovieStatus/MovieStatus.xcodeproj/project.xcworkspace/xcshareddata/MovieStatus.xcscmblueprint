@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0B4554867E1551130F1FD8D2A88BA33A5348870B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9073576B810866E24E45D4FD0009E4E07B491D30" : 9223372036854775807,
+    "0B4554867E1551130F1FD8D2A88BA33A5348870B" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0E5F0ED8-5D50-45E1-A05E-C0D5428E9F35",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9073576B810866E24E45D4FD0009E4E07B491D30" : "..",
+    "0B4554867E1551130F1FD8D2A88BA33A5348870B" : "AnotherMovieRepo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MovieStatus",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MovieStatus\/MovieStatus.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/stratigoster\/AnotherMovieRepo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B4554867E1551130F1FD8D2A88BA33A5348870B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/stratigoster\/LetsWatchAMovie.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9073576B810866E24E45D4FD0009E4E07B491D30"
+    }
+  ]
+}
