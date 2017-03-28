@@ -15,7 +15,6 @@
 		AE5804281E873687003574ED /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5804271E873687003574ED /* Video.swift */; };
 		AE58042A1E87369B003574ED /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5804291E87369B003574ED /* VideoCell.swift */; };
 		AE58042C1E8736A4003574ED /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE58042B1E8736A4003574ED /* MenuBar.swift */; };
-		AE58042E1E8736AE003574ED /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE58042D1E8736AE003574ED /* DescriptionCell.swift */; };
 		AE5804301E8736BE003574ED /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE58042F1E8736BE003574ED /* FoodCollectionViewCell.swift */; };
 		AE5804321E8736D4003574ED /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5804311E8736D4003574ED /* DetailViewController.swift */; };
 		AE5804351E873BEA003574ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5804341E873BEA003574ED /* Extensions.swift */; };
@@ -32,7 +31,6 @@
 		AE5804271E873687003574ED /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AE5804291E87369B003574ED /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		AE58042B1E8736A4003574ED /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
-		AE58042D1E8736AE003574ED /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		AE58042F1E8736BE003574ED /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE5804311E8736D4003574ED /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AE5804341E873BEA003574ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			children = (
 				AE5804291E87369B003574ED /* VideoCell.swift */,
 				AE58042B1E8736A4003574ED /* MenuBar.swift */,
-				AE58042D1E8736AE003574ED /* DescriptionCell.swift */,
 				AE58042F1E8736BE003574ED /* FoodCollectionViewCell.swift */,
 			);
 			name = View;
@@ -193,7 +190,6 @@
 				AE5804151E8734EA003574ED /* ViewController.swift in Sources */,
 				AE5804351E873BEA003574ED /* Extensions.swift in Sources */,
 				AE58042A1E87369B003574ED /* VideoCell.swift in Sources */,
-				AE58042E1E8736AE003574ED /* DescriptionCell.swift in Sources */,
 				AE5804281E873687003574ED /* Video.swift in Sources */,
 				AE5804131E8734EA003574ED /* AppDelegate.swift in Sources */,
 				AE58042C1E8736A4003574ED /* MenuBar.swift in Sources */,
@@ -362,6 +358,7 @@
 				AE5804231E8734EA003574ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

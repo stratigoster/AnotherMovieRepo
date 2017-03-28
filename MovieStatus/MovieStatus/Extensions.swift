@@ -25,3 +25,59 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
+
+//create a cache using NSCache
+let imageCache = NSCache<AnyObject, AnyObject>()
+
+class CustomImageView: UIImageView {
+    var imageUrlString: String?
+    func loadImageUsingUrlString(_ urlString: String) {
+        
+        imageUrlString = urlString
+        
+        let url = URL(string: urlString)
+        
+        print("url: ")
+        print(url)
+        
+        image = nil
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.image = imageFromCache
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url!, completionHandler: {(data, response, error) in
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            DispatchQueue.main.async(execute: {
+                
+                let imageToCache = UIImage(data: data!)
+                
+                //let imageName = "taylor_swift_profile.png"
+                //let image = UIImage(named: imageName)
+                //print("image: ")
+                //print(image)
+                //let imageView = UIImageView(image: image!)
+                
+                if self.imageUrlString == urlString {
+                    self.image = imageToCache
+                }
+                
+                //if urlString == "https://image.tmdb.org/t/p/w500/xzbAey8RrRNKOe6JZMuxbIRc1UE.jpg" || urlString == "https://image.tmdb.org/t/p/w500/4cJv0cghFaJfepzGdOyqeNaJWYb.jpg" {
+                    //add imageView to imageCache
+                    //imageCache.setObject(imageView, forKey: urlString as AnyObject)
+                //}
+                //else {
+                    //if (imageToCache != nil) {
+                        imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                    //}
+                //}
+                
+            })
+        }).resume()
+    }
+}

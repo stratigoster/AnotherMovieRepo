@@ -47,10 +47,11 @@ class DetailModel: NSObject {
     var runtime: Double?
     var title: String?
     //var belongs_to_collection: [String]?
-    var cnt: Int?
+    //var cnt: Int?
     var collection_name: String?
     var backdrop_path: String?
     var poster_path: String?
     var poster_id: Double?
+    
 }
 
