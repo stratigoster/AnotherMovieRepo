@@ -45,6 +45,220 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     let dictionary = json as? NSDictionary
                     print("dictionary: ")
                     print(dictionary)
+                    
+                    if let budget = dictionary?["budget"] as? String {
+                        detail.budget = budget
+                    }
+                    else {
+                        detail.budget = ""
+                    }
+                    
+                    detail.genre = []
+                    
+                    if let genres = dictionary?["genres"] as? NSArray {
+                        if genres.count != 0 {
+                            for i in 0..<genres.count {
+                                if let temp = genres[i] as? NSDictionary {
+                                    detail.genre?.append((temp["name"] as? String)!)
+                                }
+                                else {
+                                    print("failure")
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        detail.genre = []
+                    }
+                    
+                    if let homepage = dictionary?["homepage"] as? String {
+                        detail.homepage = homepage
+                    }
+                    else {
+                        detail.homepage = ""
+                    }
+                    
+                    if let imdb = dictionary?["imdb_id"] as? String {
+                        detail.imdb = imdb
+                    }
+                    else {
+                        detail.imdb = ""
+                    }
+                    
+                    if let original_language = dictionary?["original_language"] as? String {
+                        detail.original_language = original_language
+                    }
+                    else {
+                        detail.original_language = ""
+                    }
+                    
+                    if let popularity = dictionary?["popularity"] as? String {
+                        detail.popularity = popularity
+                    }
+                    else {
+                        detail.popularity = ""
+                    }
+                    
+                    detail.production_companies = []
+                    
+                    if let productionCompany = dictionary?["production_companies"] as? NSArray {
+                        if productionCompany.count != 0 {
+                            for i in 0..<productionCompany.count {
+                                if let temp = productionCompany[i] as? NSDictionary {
+                                    var production_company_name = temp["name"] as? String
+                                    detail.production_companies?.append(production_company_name!)
+                                }
+                                else {
+                                    print("failure")
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        detail.production_companies = []
+                    }
+
+                    if let release_date = dictionary?["release_date"] as? String {
+                        detail.release_date = release_date
+                    }
+                    else {
+                        detail.release_date = ""
+                    }
+                    
+                    if let revenue = dictionary?["revenue"] as? Double {
+                        detail.revenue = revenue
+                    }
+                    else {
+                        detail.revenue = -1
+                    }
+                    
+                    if let runtime = dictionary?["runtime"] as? Double {
+                        detail.runtime = runtime
+                    }
+                    else {
+                        detail.runtime = -1
+                    }
+                    
+                    if let productionCompany = dictionary?["spoken_languages"] as? NSArray {
+                        if productionCompany.count != 0 {
+                            for i in 0..<productionCompany.count {
+                                if let temp = productionCompany[i] as? NSDictionary {
+                                    var language_name = temp["name"]
+                                    detail.spoken_languages?.append(language_name as! String)
+                                }
+                                else {
+                                    print("failure")
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        detail.spoken_languages = []
+                    }
+                    
+                    if let status = dictionary?["status"] as? String {
+                        detail.status = status
+                    }
+                    else {
+                        detail.status = ""
+                    }
+                    
+                    if let tagline = dictionary?["tagline"] as? String {
+                        detail.tagline = tagline
+                    }
+                    else {
+                        detail.tagline = ""
+                    }
+                    
+                    if let title = dictionary?["title"] as? String {
+                        detail.title = title
+                    }
+                    else {
+                        detail.title = ""
+                    }
+                    
+                    if let avg_vote = dictionary?["vote_average"] as? Double {
+                        detail.average_vote = avg_vote
+                    }
+                    else {
+                        detail.average_vote = -1
+                    }
+                    
+                    if let avg_cnt = dictionary?["vote_count"] as? Double {
+                        detail.average_cnt = avg_cnt
+                    }
+                    else {
+                        detail.average_cnt = -1
+                    }
+                    
+                    if let id = dictionary?["id"] as? String {
+                        detail.id = id
+                    }
+                    else {
+                        detail.id = ""
+                    }
+                    
+                    print("detail: ")
+                    print("id")
+                    print(detail.id)
+                    print("average cnt")
+                    print(detail.average_cnt)
+                    print("average_vote")
+                    print(detail.average_vote)
+                    print("title")
+                    print(detail.title)
+                    print("tagline")
+                    print(detail.tagline)
+                    print("status")
+                    print(detail.status)
+                    print("spoken_languages")
+                    print(detail.spoken_languages)
+                    print("runtime")
+                    print(detail.runtime)
+                    print("revenue")
+                    print(detail.revenue)
+                    print("release_date")
+                    print(detail.release_date)
+                    print("production companies")
+                    print(detail.production_companies)
+                    print("popularity")
+                    print(detail.popularity)
+                    print("original_language")
+                    print(detail.original_language)
+                    print("budget")
+                    print(detail.budget)
+                    print("genre")
+                    print(detail.genre)
+                    print("homepage")
+                    print(detail.homepage)
+                    print("imdb")
+                    print(detail.imdb)
+                    
+                    print("----------------------------------------------------------------------------")
+                    
+                    if let avg_cnt = dictionary?["vote_count"] as? Double {
+                        detail.average_cnt = avg_cnt
+                    }
+                    else {
+                        detail.average_cnt = -1
+                    }
+                    
+                    if let title = dictionary?["title"] as? String {
+                        detail.title = title
+                    }
+                    else {
+                        detail.title = ""
+                    }
+                    
+                    video.title = dictionary?["title"] as? String
+                    
+                    //var backdrop_total = self.basePhotoUrl + self.samplePath
+                    
+                    
+                    DispatchQueue.main.async(execute: {
+                        self.collectionView?.reloadData()
+                    })
+                    
                 }
                 catch let jsonError {
                     print(jsonError)

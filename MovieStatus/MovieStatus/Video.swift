@@ -29,7 +29,7 @@ class Channel: NSObject {
 class DetailModel: NSObject {
     
     var vote_average:Double?
-    var budget: Double?
+    var budget: String?
     var genre: [String]?
     var homepage: String?
     var imdb: String?
@@ -48,6 +48,7 @@ class DetailModel: NSObject {
     var title: String?
     //var belongs_to_collection: [String]?
     //var cnt: Int?
+    var content:String?
     var collection_name: String?
     var backdrop_path: String?
     var poster_path: String?
