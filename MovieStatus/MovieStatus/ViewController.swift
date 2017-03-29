@@ -26,7 +26,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func fetchVideos() {
         //let url = URL(string: "https://api.themoviedb.org/3/movie/100?api_key=3a4bf77e064186e7170196ff7fb1519e&language=en-US")
         
-        for i in 100...120 {
+        for i in 100...116 {
             let url = baseUrl + String(i) + apiURL + appendixURL
             let updateUrl = NSURL(string: url)
             URLSession.shared.dataTask(with: updateUrl as! URL) { (data, response, error) in
@@ -37,7 +37,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                    print(json)
+                    
                     let video = Video()
                     let detail = DetailModel()
                     
@@ -293,6 +293,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     }
                     
                     video.thumbnailImageName = backdrop_total
+                    print("video.thumbnailImageName:" + video.thumbnailImageName!)
                     
                     //creates the images of the profile list
                     let channel = Channel()
@@ -305,6 +306,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     }
                     
                     var outputTotal = self.basePhotoUrl + self.samplePath
+                    print("outputTotal: ")
+                    print(outputTotal)
                     
                     if let output:String = dictionary?["poster_path"] as? String {
                         outputTotal = self.basePhotoUrl + output
@@ -314,6 +317,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     }
                     
                     channel.profileImageName = outputTotal
+                    
+                    print("channel.profileImageName:" + channel.profileImageName!)
                     
                     video.channel = channel
                     
@@ -348,9 +353,31 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.allowsMultipleSelection = true
         collectionView?.allowsSelection = true
+        
+        let htmlSource = "Questions? Corrections? <a href=\"https://twitter.com/NSHipster\">@NSHipster</a> or <a href=\"https://github.com/NSHipster/articles\">on GitHub</a>."
+        
+        let linkRegexPattern = "<a\\s+[^>]*href=\"([^\"]*)\"[^>]*>"
+        let linkRegex = try! NSRegularExpression(pattern: linkRegexPattern,
+                                                 options: .caseInsensitive)
+        let matches = linkRegex.matches(in: htmlSource,
+                                        range: NSMakeRange(0, htmlSource.utf16.count))
+        
+        let links = matches.map { result -> String in
+            let hrefRange = result.rangeAt(1)
+            let start = String.UTF16Index(hrefRange.location)
+            let end = String.UTF16Index(hrefRange.location + hrefRange.length)
+            
+            return String(htmlSource.utf16[start..<end])!
+        }
+        print(links)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("item selected")
+        print("at index:")
+        print(indexPath.row)
+        
         let currentPerson: Video = self.videos[indexPath.row]
         let detailVC: DetailViewController = DetailViewController(nibName: nil, bundle: nil)
         
@@ -402,4 +429,5 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 }

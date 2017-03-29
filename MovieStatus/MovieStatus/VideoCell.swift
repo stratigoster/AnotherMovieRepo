@@ -36,17 +36,30 @@ class VideoCell: BaseCell {
     
     func setupProfileImage() {
         if let profileImageUrl = video?.channel?.profileImageName {
-            print("profileImageUrl")
-            print(profileImageUrl)
-            userProfileImageView.loadImageUsingUrlString(profileImageUrl)
+            let whitespaceSet = CharacterSet.whitespaces
+            if profileImageUrl != nil || profileImageUrl == "" || profileImageUrl.isEmpty || profileImageUrl.trimmingCharacters(in: whitespaceSet).isEmpty {
+                print("profileImageUrl: ")
+                print(profileImageUrl)
+                userProfileImageView.loadImageUsingUrlString(profileImageUrl)
+            }
+            else {
+                print("profileImageUrl is nil")
+            }
         }
     }
     
     func setupThumbnailImage() {
         if let thumbnailImageUrl = video?.thumbnailImageName {
             print("thumbnailImageUrl")
+            print("----------------")
+            
             print(thumbnailImageUrl)
-            thumbnailImageView.loadImageUsingUrlString(thumbnailImageUrl)
+            
+            let newString = thumbnailImageUrl.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+            print("newString:")
+            print(newString)
+            thumbnailImageView.loadImageUsingUrlString(newString)
+            
         }
     }
     
