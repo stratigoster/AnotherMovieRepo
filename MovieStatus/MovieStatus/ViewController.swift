@@ -30,7 +30,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
             let url = baseUrl + String(i) + apiURL + appendixURL
             let updateUrl = NSURL(string: url)
             URLSession.shared.dataTask(with: updateUrl as! URL) { (data, response, error) in
-                print("successfully added network connection code")
                 if error != nil {
                     print(error)
                     return
@@ -43,8 +42,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     let detail = DetailModel()
                     
                     let dictionary = json as? NSDictionary
-                    print("dictionary: ")
-                    print(dictionary)
                     
                     if let budget = dictionary?["budget"] as? String {
                         detail.budget = budget
@@ -236,6 +233,8 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     
                     print("----------------------------------------------------------------------------")
                     
+                    var backdrop_total = self.basePhotoUrl + self.samplePath
+                    
                     if let avg_cnt = dictionary?["vote_count"] as? Double {
                         detail.average_cnt = avg_cnt
                     }
@@ -253,7 +252,75 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     video.title = dictionary?["title"] as? String
                     
                     //var backdrop_total = self.basePhotoUrl + self.samplePath
+                    print("video.title: ")
+                    print(video.title)
                     
+                    var content = "No content available"
+                    
+                    if let overView = dictionary?["overview"] as? String {
+                        content = overView
+                    }
+                    else {
+                        content = ""
+                    }
+                    
+                    if let popularity = dictionary?["popularity"] as? String {
+                        video.popularity = popularity
+                    }
+                    else {
+                        video.popularity = ""
+                    }
+                    
+                    if let overView = dictionary?["overview"] as? String {
+                        content = overView
+                    }
+                    else {
+                        content = ""
+                    }
+
+                    if let popularity = dictionary?["popularity"] as? String {
+                        video.popularity = popularity
+                    }
+                    else {
+                        video.popularity = ""
+                    }
+                    
+                    if let backdrop_url = dictionary?["backdrop_path"] as? String {
+                        backdrop_total = self.basePhotoUrl + backdrop_url
+                    }
+                    else {
+                        backdrop_total = ""
+                    }
+                    
+                    video.thumbnailImageName = backdrop_total
+                    
+                    //creates the images of the profile list
+                    let channel = Channel()
+                    
+                    if let name = dictionary?["releaseData"] as? String {
+                        channel.name = name
+                    }
+                    else {
+                        channel.name = ""
+                    }
+                    
+                    var outputTotal = self.basePhotoUrl + self.samplePath
+                    
+                    if let output:String = dictionary?["poster_path"] as? String {
+                        outputTotal = self.basePhotoUrl + output
+                    }
+                    else {
+                        outputTotal = ""
+                    }
+                    
+                    channel.profileImageName = outputTotal
+                    
+                    video.channel = channel
+                    
+                    print(self.videos)
+                    self.videos.append(video)
+                    print(self.model)
+                    self.model.append(detail)
                     
                     DispatchQueue.main.async(execute: {
                         self.collectionView?.reloadData()
