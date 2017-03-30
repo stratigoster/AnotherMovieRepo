@@ -28,6 +28,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let url = baseUrl + String(i) + apiURL + appendixURL
         let updateUrl = NSURL(string: url)
         URLSession.shared.dataTask(with: updateUrl as! URL) { (data, response, error) in
+            
             if error != nil {
                 print(error)
                 return
@@ -385,7 +386,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let currentPerson: Video = self.videos[indexPath.row]
         let detailVC: DetailViewController = DetailViewController(nibName: nil, bundle: nil)
         
-        
         let m = model[indexPath.row]
         print(m)
         
@@ -394,28 +394,69 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         print("---------------")
         print("average cnt: ")
         print(m.average_cnt!)
+        
+        if m.average_cnt != -1 {
+            detailVC.labels.append("")
+            detailVC.images.append("")
+        }
+        
         print("average vote: ")
         print(m.average_vote!)
+        
+        if m.average_vote != -1 {
+            detailVC.labels.append("")
+            detailVC.images.append("")
+        }
+        
         print("budget: ")
         print(m.budget!)
+        
+        if m.budget != "" {
+            detailVC.labels.append("budget: ")
+            detailVC.images.append(m.budget!)
+        }
+        
         print("homepage: ")
         print(m.homepage!)
+        
+        if m.homepage != "" {
+            detailVC.labels.append("homepage: ")
+            detailVC.images.append(m.homepage!)
+        }
+        
         print("id: ")
         print(m.id!)
+        
+        if m.imdb != "" {
+            detailVC.labels.append("imdb: ")
+            detailVC.images.append(m.imdb!)
+        }
+        
         print("imdb: ")
         print(m.imdb!)
+        
+        if m.original_language != "" {
+            detailVC.labels.append("original_language: ")
+            detailVC.images.append(m.original_language!)
+        }
+        
         print("original_language: ")
         print(m.original_language!)
+        
+        if m.popularity != "" {
+            detailVC.labels.append("popularity: ")
+            detailVC.images.append(m.popularity!)
+        }
         print("popularity: ")
         print(m.popularity!)
+        
+        if m.release_date != "" {
+            detailVC.labels.append("release_date: ")
+            detailVC.images.append(m.release_date!)
+        }
         print("release_date: ")
         print(m.release_date!)
         
-        
-        detailVC.labels = ["budget: ", "homepage: ", "id: ", "imdb: ", "original language: ", "popularity: ", "release_date: "]
-        
-        
-        detailVC.images = [m.budget!, m.homepage!, m.id!, m.imdb!, m.original_language!, m.popularity!, m.release_date!]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

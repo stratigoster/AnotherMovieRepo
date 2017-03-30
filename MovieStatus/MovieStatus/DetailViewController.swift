@@ -11,17 +11,22 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var collectionView: UICollectionView!
-    var images = ["1", "2", "3", "4", "5"]
-    var labels = ["1", "2", "3", "4", "5"]
+    var images:[String] = []
+    var labels:[String] = []
     
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
+        
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
+        
         collectionView.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: "foodCell")
         collectionView.backgroundColor = UIColor.white
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
+        //TODO: add layout code here
+        view.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
+        view.addConstraintsWithFormat("V:|[v0]|", views: collectionView)
     }
     
     override func viewDidLoad() {
@@ -31,7 +36,6 @@ class DetailViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
