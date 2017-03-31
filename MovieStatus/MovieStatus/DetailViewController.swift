@@ -25,8 +25,6 @@ class DetailViewController: UIViewController {
         collectionView.dataSource = self
         view.addSubview(collectionView)
         //TODO: add layout code here
-        view.addConstraintsWithFormat("H:|[v0]|", views: collectionView)
-        view.addConstraintsWithFormat("V:|[v0]|", views: collectionView)
     }
     
     override func viewDidLoad() {

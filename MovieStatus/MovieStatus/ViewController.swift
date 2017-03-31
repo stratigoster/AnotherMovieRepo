@@ -43,12 +43,11 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 let dictionary = json as? NSDictionary
                 
                 if let budget = dictionary?["budget"] as? String {
-                    detail.budget = budget
-                }
-                else {
-                    detail.budget = ""
+                    detail.input.append("budget")
+                    detail.input.append(budget)
                 }
                 
+                /*
                 detail.genre = []
                 
                 if let genres = dictionary?["genres"] as? NSArray {
@@ -66,34 +65,29 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 else {
                     detail.genre = []
                 }
+                */
                 
                 if let homepage = dictionary?["homepage"] as? String {
-                    detail.homepage = homepage
-                }
-                else {
-                    detail.homepage = ""
+                    detail.input.append("homepage: ")
+                    detail.input.append(homepage)
                 }
                 
                 if let imdb = dictionary?["imdb_id"] as? String {
-                    detail.imdb = imdb
-                }
-                else {
-                    detail.imdb = ""
+                    detail.input.append("imdb: ")
+                    detail.input.append(imdb)
                 }
                 
                 if let original_language = dictionary?["original_language"] as? String {
-                    detail.original_language = original_language
-                }
-                else {
-                    detail.original_language = ""
+                    detail.input.append("original language: ")
+                    detail.input.append(original_language)
                 }
                 
                 if let popularity = dictionary?["popularity"] as? String {
-                    detail.popularity = popularity
+                    detail.input.append("popularity: " )
+                    detail.input.append(popularity)
                 }
-                else {
-                    detail.popularity = ""
-                }
+                
+                /*
                 
                 detail.production_companies = []
                 
@@ -113,28 +107,24 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 else {
                     detail.production_companies = []
                 }
+                */
                 
                 if let release_date = dictionary?["release_date"] as? String {
-                    detail.release_date = release_date
-                }
-                else {
-                    detail.release_date = ""
+                    detail.input.append("release_date: ")
+                    detail.input.append(release_date)
                 }
                 
                 if let revenue = dictionary?["revenue"] as? Double {
-                    detail.revenue = revenue
-                }
-                else {
-                    detail.revenue = -1
+                    detail.input.append("revenue: ")
+                    detail.input.append(String(describing: revenue))
                 }
                 
                 if let runtime = dictionary?["runtime"] as? Double {
-                    detail.runtime = runtime
-                }
-                else {
-                    detail.runtime = -1
+                    detail.input.append("runtime: ")
+                    detail.input.append(String(describing: runtime))
                 }
                 
+                /*
                 if let productionCompany = dictionary?["spoken_languages"] as? NSArray {
                     if productionCompany.count != 0 {
                         for i in 0..<productionCompany.count {
@@ -151,137 +141,52 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 else {
                     detail.spoken_languages = []
                 }
+                */
                 
                 if let status = dictionary?["status"] as? String {
-                    detail.status = status
-                }
-                else {
-                    detail.status = ""
+                    detail.input.append("status: ")
+                    detail.input.append(status)
                 }
                 
                 if let tagline = dictionary?["tagline"] as? String {
-                    detail.tagline = tagline
-                }
-                else {
-                    detail.tagline = ""
+                    detail.input.append("tagline: ")
+                    detail.input.append(tagline)
                 }
                 
                 if let title = dictionary?["title"] as? String {
-                    detail.title = title
-                }
-                else {
-                    detail.title = ""
+                    detail.input.append("title: ")
+                    detail.input.append(title)
                 }
                 
                 if let avg_vote = dictionary?["vote_average"] as? Double {
-                    detail.average_vote = avg_vote
-                }
-                else {
-                    detail.average_vote = -1
+                    detail.input.append("vote_average: ")
+                    detail.input.append(String(describing: avg_vote))
                 }
                 
                 if let avg_cnt = dictionary?["vote_count"] as? Double {
-                    detail.average_cnt = avg_cnt
-                }
-                else {
-                    detail.average_cnt = -1
+                    detail.input.append("vote_count: ")
+                    detail.input.append(String(describing: avg_cnt))
                 }
                 
                 if let id = dictionary?["id"] as? String {
-                    detail.id = id
+                    detail.input.append("id: ")
+                    detail.input.append(id)
                 }
-                else {
-                    detail.id = ""
-                }
-                
-                print("detail: ")
-                print("id")
-                print(detail.id)
-                print("average cnt")
-                print(detail.average_cnt)
-                print("average_vote")
-                print(detail.average_vote)
-                print("title")
-                print(detail.title)
-                print("tagline")
-                print(detail.tagline)
-                print("status")
-                print(detail.status)
-                print("spoken_languages")
-                print(detail.spoken_languages)
-                print("runtime")
-                print(detail.runtime)
-                print("revenue")
-                print(detail.revenue)
-                print("release_date")
-                print(detail.release_date)
-                print("production companies")
-                print(detail.production_companies)
-                print("popularity")
-                print(detail.popularity)
-                print("original_language")
-                print(detail.original_language)
-                print("budget")
-                print(detail.budget)
-                print("genre")
-                print(detail.genre)
-                print("homepage")
-                print(detail.homepage)
-                print("imdb")
-                print(detail.imdb)
-                
-                print("----------------------------------------------------------------------------")
                 
                 var backdrop_total = self.basePhotoUrl + self.samplePath
                 
-                if let avg_cnt = dictionary?["vote_count"] as? Double {
-                    detail.average_cnt = avg_cnt
-                }
-                else {
-                    detail.average_cnt = -1
-                }
-                
-                if let title = dictionary?["title"] as? String {
-                    detail.title = title
-                }
-                else {
-                    detail.title = ""
-                }
-                
                 video.title = dictionary?["title"] as? String
-                
-                //var backdrop_total = self.basePhotoUrl + self.samplePath
-                print("video.title: ")
-                print(video.title)
                 
                 var content = "No content available"
                 
                 if let overView = dictionary?["overview"] as? String {
-                    content = overView
-                }
-                else {
-                    content = ""
+                    detail.input.append("content: ")
+                    detail.input.append(content)
                 }
                 
                 if let popularity = dictionary?["popularity"] as? String {
-                    video.popularity = popularity
-                }
-                else {
-                    video.popularity = ""
-                }
-                
-                if let overView = dictionary?["overview"] as? String {
-                    content = overView
-                }
-                else {
-                    content = ""
-                }
-                
-                if let popularity = dictionary?["popularity"] as? String {
-                    video.popularity = popularity
-                }
-                else {
-                    video.popularity = ""
+                    detail.input.append("popularity: ")
+                    detail.input.append(popularity)
                 }
                 
                 if let backdrop_url = dictionary?["backdrop_path"] as? String {
@@ -317,19 +222,15 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 channel.profileImageName = outputTotal
                 
-                print("channel.profileImageName:" + channel.profileImageName!)
-                
                 video.channel = channel
                 
-                print(self.videos)
                 self.videos.append(video)
-                print(self.model)
+                
                 self.model.append(detail)
                 
                 DispatchQueue.main.async(execute: {
                     self.collectionView?.reloadData()
                 })
-                
             }
             catch let jsonError {
                 print(jsonError)
@@ -340,7 +241,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func fetchVideos() {
         //let url = URL(string: "https://api.themoviedb.org/3/movie/100?api_key=3a4bf77e064186e7170196ff7fb1519e&language=en-US")
-        
         parseData()
     }
 
@@ -379,83 +279,37 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("item selected")
-        print("at index:")
-        print(indexPath.row)
-        
         let currentPerson: Video = self.videos[indexPath.row]
         let detailVC: DetailViewController = DetailViewController(nibName: nil, bundle: nil)
         
         let m = model[indexPath.row]
-        print(m)
         
+        print("----------------------------------")
         
-        print("DetailModel: ")
-        print("---------------")
-        print("average cnt: ")
-        print(m.average_cnt!)
-        
-        if m.average_cnt != -1 {
-            detailVC.labels.append("")
-            detailVC.images.append("")
+        for i in stride(from: 0, to: m.input.endIndex, by: 1){
+            if i % 2 == 0 {
+                detailVC.labels.append(m.input[i])
+            }
+            else {
+                detailVC.images.append(m.input[i])
+            }
         }
         
-        print("average vote: ")
-        print(m.average_vote!)
+        print("----------------------------------")
         
-        if m.average_vote != -1 {
-            detailVC.labels.append("")
-            detailVC.images.append("")
+        /*
+        var index : Int
+        for index = 0; index < m.input.endIndex; index++ {
+            if index % 2 == 0 {
+                detailVC.images.append(i)
+            }
+            else {
+                detailVC.labels.append(i)
+            }
         }
+        */
         
-        print("budget: ")
-        print(m.budget!)
-        
-        if m.budget != "" {
-            detailVC.labels.append("budget: ")
-            detailVC.images.append(m.budget!)
-        }
-        
-        print("homepage: ")
-        print(m.homepage!)
-        
-        if m.homepage != "" {
-            detailVC.labels.append("homepage: ")
-            detailVC.images.append(m.homepage!)
-        }
-        
-        print("id: ")
-        print(m.id!)
-        
-        if m.imdb != "" {
-            detailVC.labels.append("imdb: ")
-            detailVC.images.append(m.imdb!)
-        }
-        
-        print("imdb: ")
-        print(m.imdb!)
-        
-        if m.original_language != "" {
-            detailVC.labels.append("original_language: ")
-            detailVC.images.append(m.original_language!)
-        }
-        
-        print("original_language: ")
-        print(m.original_language!)
-        
-        if m.popularity != "" {
-            detailVC.labels.append("popularity: ")
-            detailVC.images.append(m.popularity!)
-        }
-        print("popularity: ")
-        print(m.popularity!)
-        
-        if m.release_date != "" {
-            detailVC.labels.append("release_date: ")
-            detailVC.images.append(m.release_date!)
-        }
-        print("release_date: ")
-        print(m.release_date!)
+        print("----------------------------------")
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

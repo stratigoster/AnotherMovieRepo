@@ -49,17 +49,9 @@ class VideoCell: BaseCell {
     }
     
     func setupThumbnailImage() {
-        if let thumbnailImageUrl = video?.thumbnailImageName {
-            print("thumbnailImageUrl")
-            print("----------------")
-            
-            print(thumbnailImageUrl)
-            
+        if let thumbnailImageUrl = video?.thumbnailImageName {            
             let newString = thumbnailImageUrl.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-            print("newString:")
-            print(newString)
             thumbnailImageView.loadImageUsingUrlString(newString)
-            
         }
     }
     
